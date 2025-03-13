@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mysql-service
+  namespace: track
+spec:
+  clusterIP: None
+  selector:
+    app: tracker
+  ports:
+    - protocol: TCP
+      targetPort: 3306
+      port: 3306

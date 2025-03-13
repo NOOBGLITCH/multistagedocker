@@ -1,0 +1,94 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: track-deployment
+  namespace: track
+  labels:
+    app: tracker
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: tracker
+  template:
+    metadata:
+      labels:
+        app: tracker
+    spec:
+      containers:
+      - name: tracker-pod
+        image: swayamnakshane/expenseapp:latest
+        ports:
+          - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: SPRING_DATASOURCE_PASSWORD
+        
+        - name: SPRING_DATASOURCE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: mysql-configmap
+              key: SPRING_DATASOURCE_URL
+
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: mysql-configmap
+              key: SPRING_DATASOURCE_USERNAME 
+         
+        resources:
+          requests:
+           cpu: "100m"
+           memory: "256Mi"
+          limits:
+           cpu: "500m"
+           memory: "512Mi"
+             
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 120
+          periodSeconds: 5
+          timeoutSeconds: 5
+          failureThreshold: 10
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 150
+          periodSeconds: 5
+          timeoutSeconds: 5
+          failureThreshold: 10
+
+        startupProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 60  
+          periodSeconds: 10       
+          failureThreshold: 6 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

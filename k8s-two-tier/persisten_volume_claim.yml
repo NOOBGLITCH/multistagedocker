@@ -1,0 +1,12 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: track-pvc
+  namespace: track
+spec:
+  resources:
+    requests:
+      storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual

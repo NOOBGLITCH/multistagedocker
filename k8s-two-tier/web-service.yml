@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: web-service
+  namespace: track
+spec:
+  selector:
+    app: tracker
+  type: NodePort
+  ports:
+   - protocol: TCP
+     targetPort: 8080
+     port: 8080
+     nodePort: 30080
+    
