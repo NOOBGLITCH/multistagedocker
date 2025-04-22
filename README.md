@@ -5,54 +5,91 @@
 ![Technologies](https://img.shields.io/badge/technologies-Spring_Data_jpa%20-green.svg)
 ![Technologies](https://img.shields.io/badge/technologies-Thymeleaf_&_Bootstrap%20-purple.svg)
 
-# Expenses-Tracker-WebApp
-## Overview
-The Expenses Tracker App is a robust financial management solution developed using cutting-edge technologies such as Spring Boot, Spring Security, and MySQL. With user authentication and authorization features, users can securely sign up, sign in, and perform CRUD operations on their expenses. The app's intuitive interface, powered by Thymeleaf and Bootstrap, ensures a seamless user experience. The filtering functionality allows users to efficiently organize and analyze their financial data. Explore the power of streamlined expense tracking and financial control with this feature-rich application.<br> (Screenshots below for more illustration)
+# Expenses Tracker App
 
-## Technologies Used
-- Java
-- Spring boot
-- Spring MVC
-- Spring Security
-- Spring Data (JPA)
-- MySQL
-- Thymeleaf
-- Bootstrap
+## Overview
+
+The Expenses Tracker App is a comprehensive financial management solution designed to help users track their expenses efficiently. This application is built using a robust stack that includes Spring Boot, Spring MVC, Spring Security, Spring Data JPA, MySQL, Thymeleaf, and Bootstrap. The app provides a user-friendly interface for managing personal finances, allowing users to add, edit, and delete expenses while ensuring data security and integrity.
 
 ## Features
-- **User Authentication and Authorization:** Securely sign up, sign in, and access the app with built-in authentication and authorization.
-- **CRUD Operations:** Perform essential financial tracking actions such as adding, reading, updating, and deleting expenses.
-- **Filtering:** Utilize the filtering feature to efficiently sort and view expenses based on various criteria.
+
+- User authentication and authorization using Spring Security
+- Expense tracking with the ability to categorize expenses
+- User-friendly interface built with Thymeleaf and Bootstrap
+- Persistent data storage using MySQL
+- RESTful API for managing expenses
+- Dockerized application for easy deployment
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed on your machine:
+
+- Docker
+- Docker Compose
 
 ## Getting Started
-1. **Clone the Repository:**
-`git clone https://github.com/your-username/expenses-tracker.git`
 
-2. **Configure Database:**
-Set up MySQL database and update the application.properties file with your database configuration.
+Follow these steps to set up and run the Expenses Tracker App using Docker and Docker Compose.
 
-3. **Build and Run:**
-Build the project using your preferred IDE or with Maven:
-`mvn clean install`.
+### 1. Clone the Repository
 
-4. **Run the application:**
-`java -jar target/expenses-tracker.jar`.
+```bash
+git clone https://github.com/yourusername/expenses-tracker-app.git
+cd expenses-tracker-app
+```
 
-5. **Access the App:**
-Open your web browser and navigate to `http://localhost:8080`.
+### 2. Build the Docker Image
 
-## ScreenShots
-![Example Image](screenshots/1.png) <br>
-![Example Image](screenshots/2-2.png) <br>
-![Example Image](screenshots/3-3.png) <br>
-![Example Image](screenshots/4-4.png) <br>
-![Example Image](screenshots/5-5.png) <br>
-![Example Image](screenshots/6-6.png) <br>
-![Example Image](screenshots/7.png) <br>
-![Example Image](screenshots/8.png) <br>
+Navigate to the directory containing the `Dockerfile` and build the Docker image:
 
-## Contributions
-Contributions are welcome! If you find a bug or have suggestions for improvement, feel free to open an issue or create a pull request.
+```bash
+docker build -t expenses-tracker-app .
+```
+
+### 3. Start the Application
+
+Run the following command to start the application and the MySQL database:
+
+```bash
+docker-compose up
+```
+
+### 4. Access the Application
+
+Once the application is running, you can access it by navigating to `http://localhost:8080` in your web browser.
+
+### 5. Stopping the Application
+
+To stop the application, press `CTRL + C` in the terminal where the Docker Compose command is running. You can also run:
+
+```bash
+docker-compose down
+```
+
+## Usage
+
+- Register a new user or log in with existing credentials.
+- Add, edit, and delete expenses.
+- View expenses categorized by type.
+
+## Contributing
+
+Contributions are welcome! If you have suggestions for improvements or new features, please open an issue or submit a pull request.
 
 ## License
-This project is licensed under the MIT License.
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Spring Boot](https://spring.io/projects/spring-boot)
+- [Spring MVC](https://spring.io/projects/spring-framework)
+- [Spring Security](https://spring.io/projects/spring-security)
+- [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
+- [MySQL](https://www.mysql.com/)
+- [Thymeleaf](https://www.thymeleaf.org/)
+- [Bootstrap](https://getbootstrap.com/)
+
+---
+
+Feel free to customize this README file further based on your specific project details and requirements!
